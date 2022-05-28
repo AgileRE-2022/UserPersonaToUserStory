@@ -1,49 +1,84 @@
-#coba pos tagging
-# from nltk.tag import CRFTagger
-# ct = CRFTagger()
-# ct.set_model_file('all_indo_man_tag_corpus_model.crf.tagger')
-
-# text = "Celya pergi ke Korea untuk membeli makan."
-# post_tag = ct.tag_sents([text.split()])
-# post_tag = post_tag[0]
-# print(post_tag)
-
-# #hasil = ct.tag_sents([['Saya','tidur','di','Rumah']])
-# #print(hasil)
-
-# # Perform standard imports
-# import spacy
-# nlp = spacy.load('en_core_web_sm')
-# doc = nlp("I want to buy something but I don't have money.")
-# #print(doc[4].text,"|",doc[4].pos_,"|",doc[4].tag_,"|",spacy.explain(doc[4].tag))
-#                                                                  ##kata kelima
-# for token in doc:
-#     print(f'{token.text:{10}} {token.pos_:{8}} {token.tag_:{6}} {spacy.explain(token.tag_)}')
-
 import nltk
 import string
 import re #regex
+import numpy as np
 
-needs = "A site that will simplify the planning of my business trips"
-tokens = nltk.word_tokenize(needs)
-postag = nltk.pos_tag(tokens)
-gabung = " ".join([str(item) for item in postag])
-gabung = gabung.translate(str.maketrans('', '', string.punctuation))
-token2 = nltk.word_tokenize(gabung)
-#print(token2)
-if gabung.find("NN")!=0: #INI KALAU AWALANNYA NOUN
-    kalimat = gabung[:gabung.index("NN")]
-    kalimat = kalimat.split()
-    kata = kalimat[-1]
-    #print(kata) << biar tau kata apa sebelum si NN
-    # KALAU CARA INI NGEHAPUS YG AWALANNYA KAPITAL V
-    # temp = gabung.split()
-    # gabung = " ".join([ele for ele in temp if not ele[0].isupper()])
-    gabung = re.sub(r'\b[A-Z]+\b', '', gabung) #ngehapus yg semuanya caps
-    output = kata,gabung.split(kata,1)[1]
-    output =  "".join([str(item) for item in output]) #join tuple output
-    output = re.sub("\s\s+", " ", output)
-    print("I want a",output) #biar spasinya gk jelek ok
+needs = "I want a good design that makes me feel comfortable"
+goals = "I can focus on my work"
+tokensNeeds = nltk.word_tokenize(needs)
+postagNeeds = nltk.pos_tag(tokensNeeds)
+#print(postagNeeds)
+postagNeeds2 = [list(i) for i in zip(*postagNeeds)]
+tokensGoals = nltk.word_tokenize(goals)
+postagGoals = nltk.pos_tag(tokensGoals)
+#print(postagGoals)
+postagGoals2 = [list(i) for i in zip(*postagGoals)]
+      
+def adjNoun(teks):
+    try:
+        for token in teks:
+            for token2 in teks:
+                if "JJ" and "NN" in token2:
+                    indeks = token2.index("JJ")
+                    while(indeks<len(token2)):
+                        print(token[indeks],end=' ')
+                        indeks = indeks+1
+                    return("")
+    except ValueError:
+        print("Tidak ada adj-noun")
+    
+def verbNoun(teks):
+    try:
+        for token in teks:
+            for token2 in teks:
+                if "VBP" and "NN" in token2:
+                    indeks = token2.index("VBP")
+                    while(indeks<len(token2)):
+                        print(token[indeks],end=' ')
+                        indeks = indeks+1
+                    return("")
+    except ValueError:
+        print("Tidak ada verb-noun")
+
+def Noun(teks):
+    try:
+        for token in teks:
+            for token2 in teks:
+                if "NN" in token2:
+                    indeks = token2.index("NN")
+                    while(indeks<len(token2)):
+                        print(token[indeks],end=' ')
+                        indeks = indeks+1
+                    return("")
+    except ValueError:
+        print("Tidak ada noun")
+            
+def Verb(teks):
+    try:
+        for token in teks:
+            for token2 in teks:
+                if "VB" in token2:
+                    indeks = token2.index("VB")
+                    while(indeks<len(token2)):
+                        print(token[indeks],end=' ')
+                        indeks = indeks+1
+                    return("")
+    except ValueError:
+        print("Tidak ada verb")
+
+print("AS A USER,\n")
+
+print("I WANT...")
+print(adjNoun(postagNeeds2))
+print(verbNoun(postagNeeds2))
+print(Noun(postagNeeds2))
+
+print("SO THAT I CAN...")
+print(adjNoun(postagGoals2))
+print(verbNoun(postagGoals2))
+print(Noun(postagGoals2))
+print(Verb(postagGoals2))
+
 
 """
 CC coordinating conjunction 
