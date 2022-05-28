@@ -1,0 +1,33 @@
+{% extends 'account/main.html' %}
+
+{% block content %}
+<br>
+<form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Name</label>
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">As a</label>
+        <select id="inputState" class="form-control">
+          <option selected>Admin</option>
+          <option selected>User</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Needs</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Goals</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Convert</button>
+  </form>
+<br>
+{% endblock %}
