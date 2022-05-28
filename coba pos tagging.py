@@ -1,10 +1,8 @@
 import nltk
 import string
-import re #regex
-import numpy as np
 
-needs = "I want a good design that makes me feel comfortable"
-goals = "I can focus on my work"
+needs = "The application to teach and find new places that I can travel to"
+goals = "I can find out about the new places I am traveling to"
 tokensNeeds = nltk.word_tokenize(needs)
 postagNeeds = nltk.pos_tag(tokensNeeds)
 #print(postagNeeds)
@@ -25,7 +23,7 @@ def adjNoun(teks):
                         indeks = indeks+1
                     return("")
     except ValueError:
-        print("Tidak ada adj-noun")
+        return ("")
     
 def verbNoun(teks):
     try:
@@ -38,7 +36,7 @@ def verbNoun(teks):
                         indeks = indeks+1
                     return("")
     except ValueError:
-        print("Tidak ada verb-noun")
+        print("")
 
 def Noun(teks):
     try:
@@ -51,7 +49,7 @@ def Noun(teks):
                         indeks = indeks+1
                     return("")
     except ValueError:
-        print("Tidak ada noun")
+        print("")
             
 def Verb(teks):
     try:
@@ -66,18 +64,27 @@ def Verb(teks):
     except ValueError:
         print("Tidak ada verb")
 
-print("AS A USER,\n")
+import string
 
-print("I WANT...")
-print(adjNoun(postagNeeds2))
-print(verbNoun(postagNeeds2))
-print(Noun(postagNeeds2))
+def is_header(line):
+    return line.startswith(string.punctuation)
 
-print("SO THAT I CAN...")
-print(adjNoun(postagGoals2))
-print(verbNoun(postagGoals2))
-print(Noun(postagGoals2))
-print(Verb(postagGoals2))
+print("AS A USER,".center(60,"─"))
+
+# if(adjNoun(postagNeeds2)!=None or Noun(postagNeeds2)!=None):
+print("I WANT A...".center(60,"─"))
+adjNoun(postagNeeds2),print("")
+Noun(postagNeeds2),print("")
+# if(verbNoun(postagNeeds2)!=None or Verb(postagNeeds2)!=None):
+print("I WANT TO...".center(60,"─"))
+verbNoun(postagNeeds2),print("")
+Verb(postagNeeds2),print("")
+print("SO THAT I CAN...".center(60,"─"))
+adjNoun(postagGoals2)
+verbNoun(postagGoals2)
+Noun(postagGoals2)
+Verb(postagGoals2)
+
 
 
 """
