@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'project_uas.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.sqlite3', 
-        'NAME': 'django_login',
+        'NAME': 'db.sqlite3',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',   
