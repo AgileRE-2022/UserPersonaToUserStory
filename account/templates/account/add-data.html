@@ -1,0 +1,16 @@
+{% extends 'account/main.html' %}
+
+{% block content %}
+<h1>Convert Your User Persona</h1>
+<br>
+{% if pesan %}
+<div class="alert alert-success">{{pesan}}</div>
+{% endif %}
+<form action="/tambah-data/" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <button type="submit" class="btn btn-primary">Convert</button>
+  </form>
+<br>
+{% endblock %}

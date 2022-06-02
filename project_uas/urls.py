@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from account import views
+from account.views import tambah_data
 
 app_name = "account" 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('account.urls'))
+    path('', include('account.urls')),
+    path('tambah-data/', tambah_data),
 ]

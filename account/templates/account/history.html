@@ -29,55 +29,13 @@
                             <th>User Story</th>
                         </thead>
                         <tbody>
+                            {% for row in results %}
                             <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">John Doe</p>
-                                </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1">Software engineer</p>
-                            </td>
+                              <td>{{ row.date }}</td>
+                              <td>{{ row.nama }}, as a {{ row.as_a }} needs {{ row.needs }} so that {{ row.goals }}</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1">John Doe</p>
-                                    </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">Software engineer</p>
-                                </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">John Doe</p>
-                                        </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="fw-normal mb-1">Software engineer</p>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                            <div class="ms-3">
-                                                <p class="fw-bold mb-1">John Doe</p>
-                                            </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="fw-normal mb-1">Software engineer</p>
-                                        </td>
-                                    </tr>
-                        </tbody>
+                            {% endfor %}
+                          </tbody>
                         </table>
                 </div>
             </div>
