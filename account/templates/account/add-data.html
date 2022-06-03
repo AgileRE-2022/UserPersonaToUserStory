@@ -1,16 +1,26 @@
 {% extends 'account/main.html' %}
 
 {% block content %}
-<h1>Convert Your User Persona</h1>
 <br>
 {% if pesan %}
 <div class="alert alert-success">{{pesan}}</div>
 {% endif %}
-<form action="/tambah-data/" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+      <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+          <h3>Convert User Persona To User Story</h3>
+          <p class="blue-text">Just answer a few questions<br> So that we can generate your persona to story</p>
+          <div class="card">
+              <h5 class="text-center mb-4">Input User Persona</h5>
+              <form action="/" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+              
+                <button type="submit" class="btn btn-primary">Convert</button>
+              </form>
+          </div>
+      </div>
+  </div>
 
-  <button type="submit" class="btn btn-primary">Convert</button>
-  </form>
 <br>
 {% endblock %}
