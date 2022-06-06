@@ -7,4 +7,4 @@ from account.models import UserPersona
 class FormConvert(ModelForm) :
     class Meta:
         model = UserPersona
-        fields = '__all__'
+        fields = '_all_'
