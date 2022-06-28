@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from account.forms import FormConvert
 from account.models import UserPersona
+from .coba_pos_tagging import postag
 #import nltk
 #from nltk.stem import SnowballStemmer
 
@@ -16,7 +17,15 @@ def result(request):
     return render(request, 'account/result.html')
 
 def history(request) :
-    results = UserPersona.objects.all()
+    raw_results = UserPersona.objects.all()
+    results = []
+    for result in raw_results:
+        res_postag = postag(result.needs, result.goals)
+        results.append({
+            "date": result.date,
+            "nama": result.nama,
+            "postag": res_postag
+        })
     konteks = {
         'results' : results,
     }
