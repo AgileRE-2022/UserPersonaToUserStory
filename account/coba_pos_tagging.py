@@ -4,11 +4,12 @@ ps = SnowballStemmer(language='english')
 
 """
 RULES:
-1) System will detect [NEEDS] with either ADJ+NOUN or NOUN
+1) Pay attention to capitalization; the system is CASE SENSITIVE
+2) System will detect [NEEDS] with either ADJ+NOUN or NOUN
     Verb 1 sometimes is detected as NOUN, resulting an incorrect user story
-2) Please refrain using VERB - system will most likely create an incorrect result
-3) You must put VERB in [GOALS] at THE VERY START OF THE SENTENCE
-4) In short, the supported format is:
+3) Please refrain using VERB - system will most likely create an incorrect result
+4) You must put VERB in [GOALS] at THE VERY START OF THE SENTENCE
+5) In short, the supported format is:
    [NEEDS] SUBJECT+VERB+ADJ+NOUN/NOUN
    [GOALS] VERB
 """
