@@ -1,33 +1,36 @@
 import nltk
+from nltk.stem import SnowballStemmer
+ps = SnowballStemmer(language='english')
 
 """
 RULES:
-1) System will detect [NEEDS] with either ADJ+NOUN or NOUN (both nouns are singular)
-2) Please refrain using VERB and PLURAL NOUN in NEEDS - system will most likely create incorrect result
-3) You must include VERB in [GOALS] but DO NOT use it at THE VERY START OF THE SENTENCE
+1) System will detect [NEEDS] with either ADJ+NOUN or NOUN
+    Verb 1 sometimes is detected as NOUN, resulting an incorrect user story
+2) Please refrain using VERB - system will most likely create an incorrect result
+3) You must put VERB in [GOALS] at THE VERY START OF THE SENTENCE
 4) In short, the supported format is:
-   [NEEDS] ADJ+NOUN/NOUN (singular noun)
-   [GOALS] Subject+modal (can, may, etc.)+VERB
+   [NEEDS] SUBJECT+VERB+ADJ+NOUN/NOUN
+   [GOALS] VERB
 """
 
-needs = "The application to teach and find new places that I can travel to"
-goals = "I can find out about the new places I am traveling to"
+needs = "I love a good design"
+goals = "To understand more about the app"
 tokensNeeds = nltk.word_tokenize(needs)
-postagNeeds = nltk.pos_tag(tokensNeeds)
-#print(postagNeeds)
+postagNeeds = nltk.pos_tag(tokensNeeds, tagset='universal')
+print(postagNeeds)
 postagNeeds2 = [list(i) for i in zip(*postagNeeds)]
 tokensGoals = nltk.word_tokenize(goals)
-postagGoals = nltk.pos_tag(tokensGoals)
+postagGoals = nltk.pos_tag(tokensGoals, tagset='universal')
 #print(postagGoals)
 postagGoals2 = [list(i) for i in zip(*postagGoals)]
 def adjNoun(teks):
     try:
         for token in teks:
             for token2 in teks:
-                if "JJ" and "NN" in token2:
-                    indeks = token2.index("JJ")
+                if "ADJ" and "NOUN" in token2:
+                    indeks = token2.index("ADJ")
                     hasil = []
-                    if token2.index("JJ")<token2.index("NN"):
+                    if token2.index("ADJ")<token2.index("NOUN"):
                         while(indeks<len(token2)):
                             b = token[indeks]
                             hasil.append(b)
@@ -42,11 +45,11 @@ def Verb(teks):
     try:
         for token in teks:
             for token2 in teks:
-                if "VB" in token2:
-                    indeks = token2.index("VB")
-                    hasil = []
-                    while(indeks<len(token2)):
-                        b = token[indeks]
+                if "VERB" in token2:
+                    indeks = token2.index("VERB")
+                    hasil = [ps.stem(token[indeks])]
+                    while(indeks+1<len(token2)):
+                        b = token[indeks+1]
                         hasil.append(b)
                         indeks = indeks+1
                     return(" ".join([str(item) for item in hasil]))
@@ -57,8 +60,8 @@ def Noun(teks):
     try:
         for token in teks:
             for token2 in teks:
-                if "NN" in token2:
-                    indeks = token2.index("NN")
+                if "NOUN" in token2:
+                    indeks = token2.index("NOUN")
                     hasil = []
                     while(indeks<len(token2)):
                         b = token[indeks]
@@ -67,7 +70,6 @@ def Noun(teks):
                     return(" ".join([str(item) for item in hasil]))
     except ValueError:
         return("[ERROR DETECTED: Format not supported]")
-            
 
 print("AS A USER,".center(60,"─"))
 
@@ -106,43 +108,3 @@ if "[ERROR DETECTED: Format not supported]" not in hasil:
     print(" ".join([str(item) for item in hasil])) #apa perlu .upper()?
 else:
     print("No user story generated. Please use the supported format!")
-
-
-
-"""
-CC coordinating conjunction 
-CD cardinal digit 
-DT determiner 
-EX existential there (like: “there is” … think of it like “there exists”) 
-FW foreign word 
-IN preposition/subordinating conjunction 
-JJ adjective – ‘big’ 
-JJR adjective, comparative – ‘bigger’ 
-JJS adjective, superlative – ‘biggest’ 
-LS list marker 1) 
-MD modal – could, will 
-NN noun, singular ‘- desk’ 
-NNS noun plural – ‘desks’ 
-NNP proper noun, singular – ‘Harrison’ 
-NNPS proper noun, plural – ‘Americans’ 
-PDT predeterminer – ‘all the kids’ 
-POS possessive ending parent’s 
-PRP personal pronoun –  I, he, she 
-PRP$ possessive pronoun – my, his, hers 
-RB adverb – very, silently, 
-RBR adverb, comparative – better 
-RBS adverb, superlative – best 
-RP particle – give up 
-TO – to go ‘to’ the store. 
-UH interjection – errrrrrrrm 
-VB verb, base form – take 
-VBD verb, past tense – took 
-VBG verb, gerund/present participle – taking 
-VBN verb, past participle – taken 
-VBP verb, sing. present, non-3d – take 
-VBZ verb, 3rd person sing. present – takes 
-WDT wh-determiner – which 
-WP wh-pronoun – who, what 
-WP$ possessive wh-pronoun, eg- whose 
-WRB wh-adverb, eg- where, when
-"""

@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from account.forms import FormConvert
 from account.models import UserPersona
+#import nltk
+#from nltk.stem import SnowballStemmer
 
 def welcome(request):
     return render(request, 'account/welcome.html')
@@ -19,10 +21,6 @@ def history(request) :
         'results' : results,
     }
     return render(request, 'account/history.html', konteks)
-
-# def coba_fungsi(request):
-#     print("HALO???????????????????????????")
-#     return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
 
 def tambah_data(request) :
     if request.POST:
