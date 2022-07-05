@@ -1,4 +1,7 @@
 import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('universal_tagset')
 from nltk.stem import SnowballStemmer
 ps = SnowballStemmer(language='english')
 
