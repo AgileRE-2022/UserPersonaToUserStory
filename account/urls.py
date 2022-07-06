@@ -9,5 +9,6 @@ urlpatterns = [
     path('history', views.history,name='history'),
     path('result', views.result,name='result'),
     path('preview', views.preview,name='preview'),
+    path('redirect/',views.preview)
     # path('coba_fungsi', views.coba_fungsi)
 ]
