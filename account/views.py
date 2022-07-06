@@ -49,7 +49,8 @@ def tambah_data(request) :
                 'form': form,
                 'pesan': pesan,
             }
-            return render(request, 'account/preview.html', konteks)
+            #return render(request, 'account/preview.html', konteks)
+            return redirect('preview',preview)
     else:
         form = FormConvert()
         konteks = {
