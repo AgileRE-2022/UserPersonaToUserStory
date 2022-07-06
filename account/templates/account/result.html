@@ -15,22 +15,28 @@
     {% block content %}
 
     {% endblock %}
-<h1>User Story Generated</h1>
-<div class="card">
-  <div class="text-center mt-3">
-      <div class="text-center px-1 mt-6">
-          <table>
-              <tr>
-                  <td style="border: 15px solid rgb(255, 255, 255);border-radius: 3rem;background-color:#edf6f8;padding: 25px 20px;">
-                      <h5 style="color: #444546;">{{ raw.nama }} as a {{ raw.as_a }}</h5>
-                      <p style="color: #464242;">{{ result }}</p>
-                  </td>
-              </tr>
-          </table>
-      </div>
+
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+        <h1>User Story Generated</h1>
+        <div class="card">
+          <div class="text-center mt-3">
+              <div class="text-center px-1 mt-6">
+                  <table style="text-align: center">
+                      <tr>
+                          <td style="border: 15px solid rgb(255, 255, 255);border-radius: 3rem;background-color:#edf6f8;padding: 25px 20px;">
+                              <h5 style="color: #444546;">{{ raw.nama }} as a {{ raw.as_a }}</h5>
+                              <p style="color: #464242;">{{ result }}</p>
+                          </td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
-
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
