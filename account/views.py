@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from account.forms import FormConvert
 from account.models import UserPersona
-from .coba_pos_tagging import postag
+from .coba_postag import postag
 #import nltk
 #from nltk.stem import SnowballStemmer
 
@@ -38,6 +38,15 @@ def preview(request):
     context= {'last': last_object}
     return render(request, 'account/preview.html', context)
 
+def result(request):
+    raw = UserPersona.objects.last()
+    re_postag = postag(raw.needs, raw.goals)
+    konteks = {
+        'result' : re_postag,
+        'raw': raw
+    }
+    return render(request, 'account/result.html', konteks)
+
 def tambah_data(request) :
     if request.POST:
         form = FormConvert(request.POST)
@@ -51,9 +60,10 @@ def tambah_data(request) :
             }
             #return render(request, 'account/preview.html', konteks)
             return redirect('preview')
+           
     else:
         form = FormConvert()
         konteks = {
             'form': form,
         }
-    return render(request, 'account/add-data.html', konteks)
+        return render(request, 'account/add-data.html', konteks)
