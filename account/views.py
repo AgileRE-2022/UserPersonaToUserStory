@@ -50,11 +50,8 @@ def tambah_data(request) :
                 'pesan': pesan,
             }
             #return render(request, 'account/preview.html', konteks)
-<<<<<<< HEAD
             return redirect('preview')
-=======
-            return redirect('preview',preview)
->>>>>>> 0a2b39b71f19e16ab318bcfe36ec333de5fa253a
+           
     else:
         form = FormConvert()
         konteks = {
