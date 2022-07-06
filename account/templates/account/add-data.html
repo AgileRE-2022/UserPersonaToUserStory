@@ -12,7 +12,7 @@
           <p class="blue-text">Just answer a few questions<br> So that we can generate your persona to story</p>
           <div class="card">
               <h5 class="text-center mb-4">Input User Persona</h5>
-              <form action="/" method="post">
+              <form style="text-align: left;"action="/" method="post">
                 {% csrf_token %}
                 {% load widget_tweaks %}
                 {% for hidden_field in form.hidden_fields %}
