@@ -126,10 +126,13 @@ def postag(needsInput, goalsInput):
             i=i+1
     #print(finalHasil)
 
+    a = []
+
     for hasil in finalHasil:
         if None not in hasil:
             retv =" ".join([str(item) for item in hasil]) 
-            retval.append(retv)
+            a.append(retv)
+            retval = ';\n'.join([str(elem) for elem in a]) #TAPI GAK NGE ENTER
         # if "[ERROR DETECTED: Format not supported]" not in hasil:
         #     print(" ".join([str(item) for item in hasil])) 
         else:
