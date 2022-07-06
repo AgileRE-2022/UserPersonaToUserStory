@@ -38,6 +38,19 @@ def preview(request):
     context= {'last': last_object}
     return render(request, 'account/preview.html', context)
 
+def result(request):
+    raw = UserPersona.objects.last()
+    res = []
+    re_postag = postag(raw.needs, raw.goals)
+    res.append({
+        "postag": re_postag
+    })
+    konteks = {
+        'result' : res,
+        'raw': raw
+    }
+    return render(request, 'account/result.html', konteks)
+
 def tambah_data(request) :
     if request.POST:
         form = FormConvert(request.POST)
