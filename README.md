@@ -5,7 +5,7 @@ UserPersonaToUserStory is a project that aims to help user in converting user pe
 # How to Install
 1) Open command prompt and go to project path
 2) Clone project repository
-3) Install required library
+3) Install the required libraries using pip install (library name)
 4) Run server using python manage.py runserver
 5) Access http://127.0.0.1:8000/ on website
 
