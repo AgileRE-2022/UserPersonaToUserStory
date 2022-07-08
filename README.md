@@ -28,24 +28,24 @@ UserPersonaToUserStory is a project that aims to help user in converting user pe
 7) System will print the output based on the inputted needs and goals. Each needs-goals will generate 1 user story. If user input 1 needs and 2 goals, the result will be 1 user story.
 
 # INPUT
-Nama: user persona's name
-As a: user persona's role
-Bio: user persona's bio
-Locations: user persona's location
-Needs: user persona's needs, must contain adjective+noun OR noun. Needs will be used as output ("I want [needs]...")
-Goals: objective or goals of user persona. Needs must contain verb, be it gerund or V1. Goals will be used as output (...so that... [goals]).
-Frustrations: user persona's frustration
-Behaviours: user persona's behaviour
+* **Nama**: user persona's name
+* **As a**: user persona's role
+* **Bio**: user persona's bio
+* **Locations**: user persona's location
+* **Needs**: user persona's needs, must contain adjective+noun OR noun. Needs will be used as output ("I want [needs]...")
+* **Goals**: objective or goals of user persona. Needs must contain verb, be it gerund or V1. Goals will be used as output (...so that... [goals]).
+* **Frustrations**: user persona's frustration
+* **Behaviours**: user persona's behaviour
 
-PREVIEW BUTTON -> redirect user to preview page
+* **PREVIEW BUTTON** -> redirect user to preview page
 
 # PREVIEW PAGE
-Preview page shows the preview of the inputted user persona.
-CONVERT BUTTON -> redirect user to convert page
+* Preview page shows the preview of the inputted user persona.
+* **CONVERT BUTTON** -> redirect user to convert page
 
 # RESULT PAGE
-Result page shows the result; user story will be generated based on the input.
-HISTORY BUTTON -> redirect user to history page
+* Result page shows the result; user story will be generated based on the input.
+* **HISTORY BUTTON** -> redirect user to history page
 
 # HISTORY PAGE
-All generated user story will be stored in history page. User can access the history page through the navigation.
+* All generated user story will be stored in history page. User can access the history page through the navigation.
