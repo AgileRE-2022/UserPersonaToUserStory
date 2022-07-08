@@ -9,8 +9,7 @@ UserPersonaToUserStory is a project that aims to help user in converting user pe
 4) Run server using python manage.py runserver
 5) Access http://127.0.0.1:8000/ on website
 
-# IMPORTANT
-RULES:
+# RULES
 1) Pay attention to capitalization; the system is CASE SENSITIVE
 2) System will detect [NEEDS] with either ADJ+NOUN or NOUN
     Verb 1 sometimes is detected as NOUN, resulting an incorrect user story
